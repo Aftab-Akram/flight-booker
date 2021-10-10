@@ -1,0 +1,15 @@
+
+<h3>Create Booking</h3>
+<%= simple_form_for @booking do |f| %>
+  <%= render 'flight_info' %>
+
+  <div id="passengers">
+    <%= f.simple_fields_for :passengers do |p| %>
+      <%= render 'passenger_fields', f: p %>
+    <% end %>
+    <%= link_to_add_association 'Add Passenger', f, :passengers, class:  "btn btn-success" %>
+  </div>
+  <br>
+  <%= f.input :flight_id, :as => :hidden, :input_html => { :value =>  @flight.id } %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
