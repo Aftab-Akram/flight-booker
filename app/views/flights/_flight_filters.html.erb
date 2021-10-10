@@ -1,0 +1,24 @@
+<%= simple_form_for :search, method: :get do |f| %>
+  <div class="row">
+    <div class="col-4">
+      <%= f.input :from_airport, as: :select, collection: @search.from_airport_options.map{|k, v| [v, k]}, required: false, label: "Departure",input_html: {class: 'form-control chosen-select'}, :include_blank => ""%>
+    </div>
+    <div class="col-4">
+      <%= f.input :to_airport, as: :select, collection: @search.to_airport_options.map{|k, v| [v, k]}, required: false, label: "Destination",input_html: {class: 'form-control chosen-select'}, :include_blank => ""%>
+    </div>
+    <div class="col-4">
+      <%=f.input :flight_date, as: :string, input_html: {type: 'date', class: 'form-control', value: @search.flight_date}, required: false, label: "Flight Date"%>
+    </div>
+  </div>
+  <br>
+  <div class="row pull-right">
+    <div class="col">
+      <%= f.button :submit, "Apply Filters", class: "btn btn-success" %>
+      <%= link_to "Clear", flights_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+  <br>
+  <br>
+  <hr>
+<% end %>
+<br>
