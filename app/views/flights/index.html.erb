@@ -37,7 +37,7 @@
           <%= flight.duration%>
         </td>
         <td>
-          <%= link_to 'Book', "", class: "btn btn-primary" %>
+          <%= link_to 'Book', new_booking_path(flight_id: flight.id), class: "btn btn-primary" %>
         </td>
       </tr>
       <% end %>

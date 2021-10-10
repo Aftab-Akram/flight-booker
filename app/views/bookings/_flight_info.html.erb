@@ -1,0 +1,35 @@
+<div id="flight_filters_result">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>
+        Departure
+      </th>
+      <th>
+        Destination
+      </th>
+      <th>
+        Flight Date
+      </th>
+      <th>
+        Duration
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <%= @flight.from_airport.name%>
+        </td>
+        <td>
+          <%= @flight.to_airport.name%>
+        </td>
+        <td>
+          <%= @flight.flight_date.strftime('%m/%d/%Y %H:%m')%>
+        </td>
+        <td>
+          <%= @flight.duration%>
+        </td>
+      </tr>
+    </tbody>
+  </table>

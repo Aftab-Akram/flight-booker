@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_141747) do
+ActiveRecord::Schema.define(version: 2021_10_10_153948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2021_10_10_141747) do
     t.index ["name"], name: "index_airports_on_name", unique: true
   end
 
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "flight_id", null: false
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["flight_id"], name: "index_bookings_on_flight_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
   create_table "flights", force: :cascade do |t|
     t.bigint "from_airport_id", null: false
     t.bigint "to_airport_id", null: false
@@ -32,6 +42,15 @@ ActiveRecord::Schema.define(version: 2021_10_10_141747) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["from_airport_id"], name: "index_flights_on_from_airport_id"
     t.index ["to_airport_id"], name: "index_flights_on_to_airport_id"
+  end
+
+  create_table "passengers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_passengers_on_booking_id"
   end
 
   create_table "users", force: :cascade do |t|
