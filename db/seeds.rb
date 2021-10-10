@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+airport1 = Airport.create!(name: Faker::Address.city, country: Faker::Address.country)
+airport2 = Airport.create!(name: Faker::Address.city, country: Faker::Address.country)
+airport3 = Airport.create!(name: Faker::Address.city, country: Faker::Address.country)
+airport4 = Airport.create!(name: Faker::Address.city, country: Faker::Address.country)
+
+Flight.create!(from_airport_id: airport1.id, to_airport_id: airport2.id, flight_date: Date.today, duration: "2-hours")
+Flight.create!(from_airport_id: airport3.id, to_airport_id: airport4.id, flight_date: Date.today, duration: "2-hours")
+Flight.create!(from_airport_id: airport1.id, to_airport_id: airport3.id, flight_date: Date.today, duration: "2-hours")
+Flight.create!(from_airport_id: airport4.id, to_airport_id: airport2.id, flight_date: Date.today, duration: "2-hours")
+Flight.create!(from_airport_id: airport2.id, to_airport_id: airport3.id, flight_date: Date.today, duration: "2-hours")
+Flight.create!(from_airport_id: airport3.id, to_airport_id: airport1.id, flight_date: Date.today, duration: "2-hours")

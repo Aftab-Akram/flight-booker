@@ -1,0 +1,51 @@
+<%= render 'flight_filters' %>
+
+<div id="flight_filters_result">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>
+        Departure
+      </th>
+      <th>
+        Destination
+      </th>
+      <th>
+        Flight Date
+      </th>
+      <th>
+        Duration
+      </th>
+      <th>
+        Actions
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @flights.each do |flight|%>
+      <tr>
+        <td>
+          <%= flight.from_airport.name%>
+        </td>
+        <td>
+          <%= flight.to_airport.name%>
+        </td>
+        <td>
+          <%= flight.flight_date.strftime('%m/%d/%Y %H:%m')%>
+        </td>
+        <td>
+          <%= flight.duration%>
+        </td>
+        <td>
+          <%= link_to 'Book', "", class: "btn btn-primary" %>
+        </td>
+      </tr>
+      <% end %>
+      <% if  @flights.blank?%>
+        <tr>
+          <td colspan="5"><i class="fa fa-warning"></i> No Flight Available</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
