@@ -17,6 +17,9 @@
         Duration
       </th>
       <th>
+        Price
+      </th>
+      <th>
         Actions
       </th>
     </tr>
@@ -37,6 +40,9 @@
           <%= flight.duration%>
         </td>
         <td>
+          $<%= flight.price%>
+        </td>
+        <td>
           <%= link_to 'Book', new_booking_path(flight_id: flight.id), class: "btn btn-primary" %>
         </td>
       </tr>
@@ -49,3 +55,5 @@
     </tbody>
   </table>
 </div>
+
+<%= will_paginate @flights, params: {page: params[:page] || 1} %>

@@ -1,5 +1,5 @@
 class FlightSearch < ApplicationService
-  attr_accessor :search_params,  :flight_date, :from_airport, :to_airport
+  attr_accessor :search_params,  :flight_date, :from_airport, :to_airport, :start_price, :end_price
 
   def initialize(params={})
     super()
@@ -8,6 +8,8 @@ class FlightSearch < ApplicationService
       @flight_date = params[:flight_date]
       @from_airport = params[:from_airport]
       @to_airport = params[:to_airport]
+      @start_price = params[:start_price]
+      @end_price = params[:end_price]
     end
   end
 
@@ -42,6 +44,14 @@ class FlightSearch < ApplicationService
 
     if to_airport.present?
       flights = flights.where(to_airport: to_airport)
+    end
+
+    if start_price.present?
+      flights = flights.where('price >= ?', start_price)
+    end
+
+    if end_price.present?
+      flights = flights.where("price <= ?", end_price)
     end
 
     flights.distinct
