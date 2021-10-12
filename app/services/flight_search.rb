@@ -26,7 +26,7 @@ class FlightSearch < ApplicationService
   end
 
   def flight_date_value
-    return Time.zone.today if flight_date.blank?
+    return nil if flight_date.blank?
     Time.zone.parse(flight_date.to_s).beginning_of_day
   end
 

@@ -1,0 +1,42 @@
+<div id="flight_filters_result">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>
+        Booking No.#
+      </th>
+      <th>
+        Payment Amount
+      </th>
+      <th>
+        Payment Status
+      </th>
+      <th>
+        Payment Date
+      </th>
+      <th>
+        View Recipt
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to @booking.id, booking_path(@booking) %>
+        </td>
+        <td>
+          <%= @charge.amount%>
+        </td>
+        <td>
+          <%= @charge.status%>
+        </td>
+        <td>
+          <%= Date.parse(@charge.created.to_s)%>
+        </td>
+        <td>
+          <%= link_to 'View Receipt', @charge.receipt_url %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -7,7 +7,7 @@
       <%= f.input :to_airport, as: :select, collection: @search.to_airport_options.map{|k, v| [v, k]}, required: false, label: "Destination",input_html: {class: 'form-control chosen-select'}, :include_blank => ""%>
     </div>
     <div class="col-4">
-      <%=f.input :flight_date, as: :string, input_html: {type: 'date', class: 'form-control', value: @search.flight_date}, required: false, label: "Flight Date"%>
+      <%=f.input :flight_date, as: :string, input_html: {type: 'date', class: 'form-control', value: @search.flight_date, min: Date.today }, required: false, label: "Flight Date"%>
     </div>
   </div>
   <br>
@@ -16,7 +16,7 @@
       <%= f.input :start_price, input_html: {class: "form-control", value: @search.start_price}, label: "Starting Price"%>
     </div>
     <div class="col-4">
-      <%= f.input :end_price, input_html: {class: "form-control", value: @search.start_price}, label: "Ending Price"%>
+      <%= f.input :end_price, input_html: {class: "form-control", value: @search.end_price}, label: "Ending Price"%>
     </div>
   </div>
   <br>

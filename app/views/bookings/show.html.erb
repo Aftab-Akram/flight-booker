@@ -1,4 +1,4 @@
-<h3>Your Booking</h3>
+<h3>Booking No#<%= @booking.id%></h3>
 
 <div id="flight_filters_result">
   <table class="table table-striped">
@@ -53,7 +53,7 @@
         </td>
         <td>
         <% if @booking.stripe_charge_id.present?%>
-          Paid
+          <%= link_to 'Payment Details', booking_charges_path(@booking) %>
         <% else%>
             <%= form_tag booking_charges_path(@booking) do %>
               <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"

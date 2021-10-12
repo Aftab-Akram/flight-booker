@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   resources :flights, only: %i[index]
   resources :bookings, except: %i[update] do
-    resources :charges, only: %i[new create show]
+    resource :charges, only: %i[create show]
   end
 end
