@@ -3,39 +3,40 @@
     <thead class="thead-dark">
     <tr>
       <th>
-        Departure
+        Booking No.#
       </th>
       <th>
-        Destination
+        Payment Amount
       </th>
       <th>
-        Flight Date
+        Payment Status
       </th>
       <th>
-        Duration
+        Payment Date
       </th>
       <th>
-        Price
+        View Recipt
       </th>
     </tr>
     </thead>
     <tbody>
       <tr>
         <td>
-          <%= @flight.from_airport.name%>
+          <%= link_to @booking.id, booking_path(@booking) %>
         </td>
         <td>
-          <%= @flight.to_airport.name%>
+          <%= @charge.amount%>
         </td>
         <td>
-          <%= @flight.flight_date.strftime('%m/%d/%Y %H:%m')%>
+          <%= @charge.status%>
         </td>
         <td>
-          <%= @flight.duration%>
+          <%= Date.parse(@charge.created.to_s)%>
         </td>
         <td>
-          $<%= @flight.price%>
+          <%= link_to 'View Receipt', @charge.receipt_url %>
         </td>
       </tr>
     </tbody>
   </table>
+</div>

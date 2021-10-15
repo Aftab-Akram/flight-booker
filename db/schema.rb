@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_153948) do
+ActiveRecord::Schema.define(version: 2021_10_11_202449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_10_10_153948) do
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "stripe_charge_id"
     t.index ["flight_id"], name: "index_bookings_on_flight_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 2021_10_10_153948) do
     t.string "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "price"
     t.index ["from_airport_id"], name: "index_flights_on_from_airport_id"
     t.index ["to_airport_id"], name: "index_flights_on_to_airport_id"
   end
@@ -61,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_10_10_153948) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "stripe_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root :to => 'flights#index'
 
   resources :flights, only: %i[index]
-  resources :bookings, except: %i[update]
+  resources :bookings, except: %i[update] do
+    resource :charges, only: %i[create show]
+  end
 end

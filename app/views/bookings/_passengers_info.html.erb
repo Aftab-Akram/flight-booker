@@ -1,0 +1,30 @@
+<h3>Passengers Info</h3>
+<table class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th>
+      Passenger Name
+    </th>
+    <th>
+      Passenger Email
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @booking.passengers.each do |passenger|%>
+    <tr>
+      <td>
+        <%= passenger.name%>
+      </td>
+      <td>
+        <%= passenger.email%>
+      </td>
+    </tr>
+  <% end%>
+  <% if @booking.passengers.blank?%>
+      <tr>
+        <td colspan="2"><i class="fa fa-warning"></i>This bookings has no passenger info</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

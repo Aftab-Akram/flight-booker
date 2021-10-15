@@ -15,3 +15,13 @@
  */
 
  @import "bootstrap/scss/bootstrap";
+
+ .pagination {
+	align-items: center;
+	justify-content: center;
+
+	a, span, em {
+		display: inline-block;
+		margin: 0 7px;
+	}
+}

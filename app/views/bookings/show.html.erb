@@ -1,4 +1,4 @@
-<h3>Your Booking</h3>
+<h3>Booking No#<%= @booking.id%></h3>
 
 <div id="flight_filters_result">
   <table class="table table-striped">
@@ -17,7 +17,13 @@
         Duration
       </th>
       <th>
+        Price
+      </th>
+      <th>
         Status
+      </th>
+      <th>
+        Pay
       </th>
       <th>
         Actions
@@ -40,44 +46,33 @@
           <%= flight.duration%>
         </td>
         <td>
+          $ <%= flight.price%>
+        </td>
+        <td>
           <%= @booking.status%>
         </td>
         <td>
-          <%= link_to 'Cancel', booking_path(@booking), method: :delete, class: "btn btn-danger" %>
+        <% if @booking.stripe_charge_id.present?%>
+          <%= link_to 'Payment Details', booking_charges_path(@booking) %>
+        <% else%>
+            <%= form_tag booking_charges_path(@booking) do %>
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                      data-description="Booking Payment"
+                      data-amount="<%flight.price%>"
+                      data-email="<%= current_user.email %>"
+                      data-locale="auto">
+              </script>
+            <% end %>
+        <% end %>
+        </td>
+        <td>
+          <%= link_to 'Cancel', booking_path(@booking),data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
         </td>
       </tr>
     </tbody>
   </table>
   <br>
   <hr>
-  <h3>Passengers Info</h3>
-  <table class="table table-striped">
-    <thead class="thead-dark">
-    <tr>
-      <th>
-        Passenger Name
-      </th>
-      <th>
-        Passenger Email
-      </th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @booking.passengers.each do |passenger|%>
-      <tr>
-        <td>
-          <%= passenger.name%>
-        </td>
-        <td>
-          <%= passenger.email%>
-        </td>
-      </tr>
-    <% end%>
-    <% if @booking.passengers.blank?%>
-        <tr>
-          <td colspan="2"><i class="fa fa-warning"></i>This bookings has no passenger info</td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= render 'passengers_info' %>
 </div>
