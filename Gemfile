@@ -30,7 +30,6 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'faker'
 gem 'simple_form'
 gem 'devise'
-gem 'activeadmin'
 gem "cocoon"
 gem "stripe"
 gem 'will_paginate', '~> 3.3'

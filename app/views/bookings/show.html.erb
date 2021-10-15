@@ -67,41 +67,12 @@
         <% end %>
         </td>
         <td>
-          <%= link_to 'Cancel', booking_path(@booking), method: :delete, class: "btn btn-danger" %>
+          <%= link_to 'Cancel', booking_path(@booking),data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
         </td>
       </tr>
     </tbody>
   </table>
   <br>
   <hr>
-  <h3>Passengers Info</h3>
-  <table class="table table-striped">
-    <thead class="thead-dark">
-    <tr>
-      <th>
-        Passenger Name
-      </th>
-      <th>
-        Passenger Email
-      </th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @booking.passengers.each do |passenger|%>
-      <tr>
-        <td>
-          <%= passenger.name%>
-        </td>
-        <td>
-          <%= passenger.email%>
-        </td>
-      </tr>
-    <% end%>
-    <% if @booking.passengers.blank?%>
-        <tr>
-          <td colspan="2"><i class="fa fa-warning"></i>This bookings has no passenger info</td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <%= render 'passengers_info' %>
 </div>
