@@ -1,6 +1,6 @@
 # README
 
-This repository is the code for the [flight-booker](https://github.com/Aftab-Akram/flight-booker) project.
+This repository is the code for the [flight-booker](https://flight-booker-v.herokuapp.com/) project.
 
 # Dependencies
 
