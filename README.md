@@ -4,8 +4,7 @@ This project is a PROTOTYPE of flight booker app. This app help the users achiev
 2. Book a flight and maintain his previous booking histroy 
 3. Pay Online
 
-### Live Link
-[FlightBooker](https://flight-booker-v.herokuapp.com/)
+### [Live Link](https://flight-booker-v.herokuapp.com/)
 
 ### Built With
 
