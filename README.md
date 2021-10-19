@@ -1,14 +1,25 @@
-# README
+# FlightBooker
+This project is a PROTOTYPE of flight booker app. This app help the users achieve the following features:
+1. Fliter flights by desired dates / airports and price
+2. Book a flight and maintain his previous booking histroy 
+3. Pay Online
 
-This repository is the code for the [flight-booker](https://flight-booker-v.herokuapp.com/) project.
+### Built With
 
-# Dependencies
+* [Ruby on Rails](https://rubyonrails.org/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
+* [Cocoon](https://github.com/nathanvda/cocoon)
+* [Stripe](https://stripe.com)
+* [RSpec](https://rspec.info/)
 
- - `ruby` 2.7.6
- - `postgres` 11
+### Prerequisites
+
+* `ruby '2.7.2`
+* `rails 6.1.4`
 
 
-### How do I get set up? ###
+### Installation
 
 ###### STEP 1: Install dependencies
 If you are on a Mac, first install [Homebrew](https://brew.sh/).
@@ -40,10 +51,8 @@ rbenv install
 
 
 ###### STEP 4: Install bundler
-We specify an exact version of bundler to avoid inconsistency
 ```
-BUNDLER_VERSION=$(grep -C1 'BUNDLED WITH' Gemfile.lock | tail -n1 | tr -d '[:space:]')
-gem install bundler --version "=$BUNDLER_VERSION"
+ bundle install 
 ```
 
 ###### STEP 5: Initialize Postgres
@@ -53,10 +62,6 @@ initdb -D /usr/local/var/postgres
 
 # Start the postgres server process
 pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
-
-# Create a development and test db
-createdb flight-booker_development
-createdb flight-booker_test
 
 # To stop postgres (when needed)
 # pg_ctl -D /usr/local/var/postgres stop
@@ -97,14 +102,18 @@ address for a fresh start.
 http://localhost:3000/logout
 ```
 
-Happy coding!
+<!-- CONTRIBUTING -->
+## Contributing
 
-Be sure to visit the [doc/coding-hints.md](doc/coding-hints.md) document.
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Be sure to visit the [doc/hot-fixes.md](doc/hot-fixes.md) document, on How to do Hot fixes.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 
-### Additional Tools ###
-
-[Prettier](https://prettier.io/docs/en/editors.html) and [Rubocop](https://rubocop.org/) are used for source formatting js and ruby respectively. Editor integration is recommended for [Prettier](https://prettier.io/docs/en/editors.html) and [Rubocop](https://docs.rubocop.org/rubocop/0.89/integration_with_other_tools.html).
-
+<!-- CONTACT -->
+## Contact
+**Aftab Akram** - [LinkedIn](https://www.linkedin.com/in/aftabakram/) - aftabakram04@gmail.com
